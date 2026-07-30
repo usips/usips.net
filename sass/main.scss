@@ -1,0 +1,606 @@
+// ==========================================================================
+// usips.net: USIPS Network Operations
+// A documentation site read by risk officers, peering coordinators, and
+// abuse desks. Paper body, dark chrome bookends, mono for record data.
+// ==========================================================================
+
+@use "tokens" as *;
+
+// --------------------------------------------------------------------------
+// Fonts
+// --------------------------------------------------------------------------
+
+@font-face {
+  font-family: "Public Sans Web";
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url("/fonts/PublicSans-Regular.woff2") format("woff2");
+}
+
+@font-face {
+  font-family: "Public Sans Web";
+  font-style: italic;
+  font-weight: 400;
+  font-display: swap;
+  src: url("/fonts/PublicSans-Italic.woff2") format("woff2");
+}
+
+@font-face {
+  font-family: "Public Sans Web";
+  font-style: normal;
+  font-weight: 600;
+  font-display: swap;
+  src: url("/fonts/PublicSans-SemiBold.woff2") format("woff2");
+}
+
+@font-face {
+  font-family: "Public Sans Web";
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: url("/fonts/PublicSans-Bold.woff2") format("woff2");
+}
+
+@font-face {
+  font-family: "Roboto Mono Web";
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url("/fonts/RobotoMono-Regular.woff2") format("woff2");
+}
+
+// --------------------------------------------------------------------------
+// Reset & base
+// --------------------------------------------------------------------------
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  font-family: $font-sans;
+  font-size: $text-lg;
+  line-height: $lh-relaxed;
+  color: $text-color;
+  background: $background-color;
+}
+
+img {
+  max-width: 100%;
+  display: block;
+}
+
+a {
+  color: $link-color;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 0.15em;
+
+  &:hover {
+    color: $link-hover-color;
+  }
+
+  &:visited {
+    color: $link-visited-color;
+  }
+
+  &:focus-visible {
+    outline: $focus-ring-width solid $focus-ring-color;
+    outline-offset: 2px;
+  }
+}
+
+code {
+  font-family: $font-mono;
+  font-size: 0.9em;
+  background: $background-alt;
+  padding: 0.1em 0.3em;
+  border-radius: $radius-sm;
+}
+
+pre {
+  font-family: $font-mono;
+  font-size: $text-sm;
+  line-height: $lh-body;
+  background: $background-alt;
+  border: 1px solid $border-color;
+  padding: $unit-2;
+  overflow-x: auto;
+  margin: $unit-3 0;
+
+  code {
+    background: none;
+    padding: 0;
+  }
+}
+
+.skip-link {
+  position: absolute;
+  left: -9999px;
+  top: 0;
+  z-index: 10;
+  background: $color-white;
+  color: $link-color;
+  padding: $unit-1 $unit-2;
+
+  &:focus {
+    left: 0;
+  }
+}
+
+.container {
+  max-width: $container-max-width;
+  margin: 0 auto;
+  padding: 0 $unit-2;
+}
+
+// --------------------------------------------------------------------------
+// Header: dark chrome band carrying the registry identity, then a nav rule
+// --------------------------------------------------------------------------
+
+.site-header {
+  background: $background-dark;
+  color: $text-inverse;
+  border-bottom: 3px solid $border-strong;
+
+  .container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: $unit-2;
+    padding-top: $unit-105;
+    padding-bottom: $unit-105;
+  }
+}
+
+.site-id {
+  display: flex;
+  align-items: center;
+  text-decoration: none;
+
+  &:visited,
+  &:hover {
+    color: inherit;
+  }
+}
+
+.site-id-text {
+  display: flex;
+  flex-direction: column;
+  line-height: $lh-tight;
+
+  .site-id-name {
+    font-weight: $fw-bold;
+    font-size: $text-md;
+    color: $text-inverse;
+    letter-spacing: 0.01em;
+  }
+
+  .site-id-org {
+    font-size: $text-xs;
+    color: $text-inverse-muted;
+  }
+}
+
+// Registry facts in the header: the site states its identity the same way
+// a whois record does.
+.site-record {
+  font-family: $font-mono;
+  font-size: $text-xs;
+  color: $text-inverse-muted;
+  text-align: right;
+  line-height: $lh-body;
+  white-space: nowrap;
+}
+
+.site-nav {
+  background: $background-color;
+  border-bottom: 1px solid $border-strong;
+
+  ul {
+    list-style: none;
+    display: flex;
+    flex-wrap: wrap;
+    column-gap: $unit-3;
+  }
+
+  a {
+    display: inline-block;
+    padding: $unit-105 0;
+    font-size: $text-sm;
+    font-weight: $fw-semibold;
+    color: $text-color;
+    text-decoration: none;
+    border-bottom: 3px solid transparent;
+    margin-bottom: -1px;
+
+    &:visited {
+      color: $text-color;
+    }
+
+    &:hover {
+      color: $link-hover-color;
+      border-bottom-color: $border-strong;
+    }
+
+    &[aria-current="page"] {
+      color: $color-primary;
+      border-bottom-color: $color-primary;
+    }
+  }
+}
+
+// --------------------------------------------------------------------------
+// Page header & document register block
+// --------------------------------------------------------------------------
+
+.page-header {
+  padding: $unit-5 0 $unit-3;
+
+  h1 {
+    font-size: $text-4xl;
+    font-weight: $fw-bold;
+    line-height: $lh-tight;
+    letter-spacing: -0.01em;
+    max-width: $measure;
+  }
+}
+
+// The signature element: every policy is a filed, dated, owned document.
+.doc-register {
+  margin: $unit-3 0 0;
+  border: 1px solid $border-strong;
+  background: $background-alt;
+  padding: $unit-105 $unit-2;
+  display: flex;
+  flex-wrap: wrap;
+  gap: $unit-05 $unit-4;
+  font-size: $text-sm;
+  max-width: $measure;
+
+  div {
+    display: flex;
+    gap: $unit-1;
+    align-items: baseline;
+  }
+
+  dt {
+    font-size: $text-xs;
+    font-weight: $fw-semibold;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+    color: $text-muted;
+  }
+
+  dd {
+    font-family: $font-mono;
+    font-size: $text-xs;
+  }
+}
+
+// --------------------------------------------------------------------------
+// Content
+// --------------------------------------------------------------------------
+
+.page-content {
+  //padding-bottom: $unit-8;
+  // USIPS Logo
+  padding-bottom: 24rem + $unit-8;
+  position: relative;
+
+  &::before {
+    content: "";
+    position: absolute;
+    z-index: -1;
+    bottom: $unit-8 / 2;
+    left: 50%;
+    transform: translateX(-50%);
+    width: min(26rem, 80vw);
+    height: 24rem;
+    opacity: 0.05;
+    pointer-events: none;
+    background: url("/logo.small.png") no-repeat bottom / contain;
+  }
+
+  // Cap each markdown block at the reading measure; the .container wrapper
+  // itself must stay full width so tables and cards can span it.
+  .container>* {
+    max-width: $measure;
+  }
+
+  // Records span the full container: tables, callouts, and the card grid.
+  .container>table,
+  .container>blockquote,
+  .container>.doc-files {
+    max-width: none;
+  }
+
+  .container>.doc-files {
+    padding: 0;
+  }
+
+  h2 {
+    font-size: $text-3xl;
+    font-weight: $fw-bold;
+    line-height: $lh-heading;
+    margin: $unit-6 0 $unit-2;
+    padding-top: $unit-3;
+    border-top: 1px solid $border-strong;
+  }
+
+  h3 {
+    font-size: $text-xl;
+    font-weight: $fw-semibold;
+    line-height: $lh-heading;
+    margin: $unit-4 0 $unit-105;
+  }
+
+  h4 {
+    font-size: $text-md;
+    font-weight: $fw-semibold;
+    margin: $unit-3 0 $unit-1;
+  }
+
+  p,
+  ul,
+  ol,
+  dl {
+    margin-bottom: $unit-2;
+  }
+
+  ul,
+  ol {
+    padding-left: $unit-3;
+  }
+
+  li {
+    margin-bottom: $unit-05;
+  }
+
+  hr {
+    border: 0;
+    border-top: 1px solid $border-color;
+    margin: $unit-4 0;
+  }
+
+  // Key commitments: blockquotes render as record callouts.
+  blockquote {
+    border-left: 4px solid $color-primary;
+    background: $background-alt;
+    padding: $unit-2;
+    margin: $unit-3 0;
+
+    p:last-child {
+      margin-bottom: 0;
+    }
+  }
+
+  // Tables are records: parchment header, hard rules, mono-friendly.
+  table {
+    width: 100%;
+    max-width: none;
+    border-collapse: collapse;
+    margin: $unit-3 0;
+    font-size: $text-sm;
+    line-height: $lh-body;
+  }
+
+  th,
+  td {
+    border: 1px solid $border-strong;
+    padding: $unit-1 $unit-105;
+    text-align: left;
+    vertical-align: top;
+  }
+
+  th {
+    background: $background-alt;
+    font-weight: $fw-semibold;
+    font-size: $text-xs;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+  }
+}
+
+@media (max-width: $breakpoint-mobile) {
+  .page-content table {
+    display: block;
+    overflow-x: auto;
+  }
+}
+
+// --------------------------------------------------------------------------
+// Landing
+// --------------------------------------------------------------------------
+
+.home-lede {
+  font-size: $text-xl;
+  line-height: $lh-body;
+  max-width: $measure;
+  margin-bottom: $unit-2;
+}
+
+// The four documents a counterparty came for, presented as files.
+.doc-files {
+  list-style: none;
+  padding: 0;
+  margin: $unit-4 0;
+  max-width: none;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: $unit-2;
+
+  li {
+    margin: 0;
+    border: 1px solid $border-strong;
+    background: $color-white;
+  }
+
+  a {
+    display: block;
+    height: 100%;
+    padding: $unit-2;
+    text-decoration: none;
+    color: inherit;
+
+    &:visited {
+      color: inherit;
+    }
+
+    &:hover {
+      background: $background-alt;
+
+      .doc-files-title {
+        color: $link-hover-color;
+        text-decoration: underline;
+      }
+    }
+  }
+
+  .doc-files-id {
+    font-family: $font-mono;
+    font-size: $text-xs;
+    color: $text-muted;
+    display: block;
+    margin-bottom: $unit-05;
+  }
+
+  .doc-files-title {
+    font-weight: $fw-semibold;
+    color: $link-color;
+    display: block;
+    margin-bottom: $unit-05;
+  }
+
+  .doc-files-desc {
+    font-size: $text-sm;
+    color: $text-muted;
+    display: block;
+    line-height: $lh-body;
+  }
+}
+
+@media (max-width: $breakpoint-mobile) {
+  .doc-files {
+    grid-template-columns: 1fr;
+  }
+}
+
+// --------------------------------------------------------------------------
+// Footer: dark chrome, compliance links, legal line
+// --------------------------------------------------------------------------
+
+.site-footer {
+  background: $background-dark;
+  color: $text-inverse-muted;
+  border-top: 3px solid $border-strong;
+  margin-top: $unit-6;
+  padding: $unit-4 0;
+  font-size: $text-sm;
+
+  a {
+    color: $text-inverse;
+
+    &:visited {
+      color: $text-inverse;
+    }
+
+    &:hover {
+      color: $color-white;
+    }
+  }
+
+  .footer-links {
+    list-style: none;
+    display: flex;
+    flex-wrap: wrap;
+    gap: $unit-05 $unit-3;
+    margin-bottom: $unit-2;
+  }
+
+  .footer-legal {
+    line-height: $lh-body;
+
+    p {
+      margin-bottom: $unit-05;
+    }
+  }
+
+  .build-info {
+    font-family: $font-mono;
+    font-size: $text-xs;
+    margin-top: $unit-105;
+  }
+}
+
+// --------------------------------------------------------------------------
+// Mobile
+// --------------------------------------------------------------------------
+
+@media (max-width: $breakpoint-mobile) {
+  body {
+    font-size: $text-md;
+  }
+
+  .site-record {
+    display: none;
+  }
+
+  .page-header h1 {
+    font-size: $text-3xl;
+  }
+
+  .site-nav ul {
+    column-gap: $unit-2;
+  }
+}
+
+// --------------------------------------------------------------------------
+// Print: these pages get filed
+// --------------------------------------------------------------------------
+
+@media print {
+
+  .site-nav,
+  .site-footer,
+  .skip-link {
+    display: none;
+  }
+
+  .site-header {
+    background: none;
+    color: $color-ink;
+    border-bottom: 2px solid $color-ink;
+
+    .site-id-name,
+    .site-id-org,
+    .site-record {
+      color: $color-ink;
+    }
+  }
+
+  // No watermark or reserved seal space on paper
+  .page-content {
+    padding-bottom: $unit-8;
+
+    &::before {
+      display: none;
+    }
+  }
+
+  body {
+    background: $color-white;
+  }
+
+  a {
+    color: $color-ink;
+  }
+}

@@ -1,0 +1,92 @@
+// ==========================================================================
+// usips.net design tokens
+// Subset of the USIPS "parchment & heritage" design system (usips.org),
+// flattened for a documentation site: paper, ink, rule lines, brown links.
+// USWDS theme model: semantic roles, 8px grid, USWDS type scale, modest
+// radii. Every text/background pair meets WCAG 2.1 AA.
+// ==========================================================================
+
+// Color primitives
+$color-ink: #1B1B1B;
+$color-white: #FFFFFF;
+
+$color-paper: #FAFAF7; // page background
+$color-parchment: #F5F0E8; // table header rows, register block
+$color-parchment-dark: #EAE2D3; // band accents
+
+$color-primary: #5B3A29; // heritage brown, 9.6:1 on paper
+$color-primary-dark: #47281B; // hover, 12.6:1 on paper
+$color-primary-darker: #2C1D12; // dark chrome: header/footer bands
+
+$color-secondary: #8F2A10; // seal red, 8.0:1 on paper; sparse emphasis only
+
+// Status tints (USWDS semantic mapping)
+$color-warning-lighter: #FAF3D1;
+$color-info-lighter: #E7F6F8;
+
+// Semantic roles
+$text-color: $color-ink;
+$text-muted: #5F574E; // 6.8:1 on paper
+$text-inverse: $color-parchment; // on dark chrome, 14.3:1
+$text-inverse-muted: #D8CDBB; // on dark chrome, 10.4:1
+
+$background-color: $color-paper;
+$background-alt: $color-parchment;
+$background-dark: $color-primary-darker;
+
+$link-color: $color-primary;
+$link-hover-color: $color-primary-dark;
+$link-visited-color: #66374A; // heritage wine, 9.1:1 on paper
+
+$border-color: #E0DBD3;
+$border-strong: #B4A48E;
+
+// Focus ring: USWDS blue-50; 3:1+ against every surface here
+$focus-ring-color: #2378C3;
+$focus-ring-width: 0.25rem;
+
+// Typography
+$font-sans: "Public Sans Web", "Public Sans", -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+$font-mono: "Roboto Mono Web", ui-monospace, "SF Mono", Consolas, "Courier New", monospace;
+
+// USWDS type scale (px in comments)
+$text-xs: 0.8125rem; // 13
+$text-sm: 0.875rem; // 14
+$text-md: 1rem; // 16, default body
+$text-lg: 1.0625rem; // 17, long-form body
+$text-xl: 1.25rem; // 20
+$text-2xl: 1.375rem; // 22, h3
+$text-3xl: 1.75rem; // 28, h2
+$text-4xl: 2.25rem; // 36, h1
+
+$lh-tight: 1.15;
+$lh-heading: 1.3;
+$lh-body: 1.55;
+$lh-relaxed: 1.62;
+
+$fw-regular: 400;
+$fw-semibold: 600;
+$fw-bold: 700;
+
+// Readable prose cap (USWDS measure-4)
+$measure: 70ch;
+
+// Spacing: 8px grid
+$unit-05: 0.25rem; // 4
+$unit-1: 0.5rem; // 8
+$unit-105: 0.75rem; // 12
+$unit-2: 1rem; // 16
+$unit-3: 1.5rem; // 24
+$unit-4: 2rem; // 32
+$unit-5: 2.5rem; // 40
+$unit-6: 3rem; // 48
+$unit-8: 4rem; // 64
+
+// Layout: narrower than usips.org; this is a reading site
+$container-max-width: 52rem; // 832
+$breakpoint-mobile: 768px;
+
+// Radii: documents have square corners; radius only on tiny UI
+$radius-sm: 2px;
+
+$transition: 0.15s ease-in-out;

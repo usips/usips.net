@@ -1,0 +1,80 @@
+name: Deploy to GitHub Pages
+
+on:
+  push:
+    branches: [ "master" ]
+    paths:
+      - 'content/**'
+      - 'templates/**'
+      - 'sass/**'
+      - 'static/**'
+      - 'config.toml'
+      - '.github/workflows/github-pages.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: "pages"
+  cancel-in-progress: false
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    env:
+      ZOLA_VERSION: "0.22.1"
+    steps:
+      - name: 'checkout'
+        uses: actions/checkout@v4
+
+      - name: 'install zola'
+        run: |
+          mkdir -p "$HOME/.local/bin"
+          curl -sL "https://github.com/getzola/zola/releases/download/v${ZOLA_VERSION}/zola-v${ZOLA_VERSION}-x86_64-unknown-linux-gnu.tar.gz" \
+            | tar xz -C "$HOME/.local/bin"
+          echo "$HOME/.local/bin" >> "$GITHUB_PATH"
+
+      - name: 'update build timestamp'
+        run: |
+          current_time=$(date -u +"%Y-%m-%d-%H-%M")
+          sed -i "s/build_timestamp = .*/build_timestamp = \"$current_time\"/" config.toml
+
+      - name: 'build site'
+        run: zola build
+
+      - name: 'check file sizes (14KB limit)'
+        run: |
+          echo "Checking HTML files against the 14KB TCP initial congestion window..."
+          MAX_SIZE=14000
+          WARNED=0
+          for file in $(find public -name "*.html" -type f); do
+            size=$(stat -c%s "$file")
+            if [ "$size" -gt "$MAX_SIZE" ]; then
+              echo "::warning file=$file::File is ${size} bytes (exceeds ${MAX_SIZE} byte limit)"
+              WARNED=1
+            else
+              echo "OK: $file is ${size} bytes"
+            fi
+          done
+          if [ "$WARNED" -eq 1 ]; then
+            echo "::notice::Some HTML files exceed 14KB. See: https://endtimes.dev/why-your-website-should-be-under-14kb-in-size/"
+          fi
+
+      - name: 'upload artifact'
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: public
+
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - name: 'deploy'
+        id: deployment
+        uses: actions/deploy-pages@v4

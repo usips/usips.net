@@ -1,0 +1,31 @@
+# usips.net: USIPS Network Operations
+base_url = "https://usips.net"
+title = "USIPS Network Operations"
+description = "Network operations, acceptable use, abuse handling, and legal process information for the United States Internet Preservation Society."
+
+compile_sass = true
+default_language = "en"
+generate_feeds = false
+build_search_index = false
+
+[link_checker]
+# IRS blocks automated clients; the TEOS link works in real browsers.
+skip_prefixes = ["https://apps.irs.gov"]
+
+[extra]
+# Build timestamp for cache busting (updated by the deploy workflow)
+build_timestamp = "local"
+
+# Advocacy and membership site
+org_site = "https://usips.org"
+
+# Primary navigation. Order mirrors the document register.
+menu = [
+    { url = "/organization/", name = "Organization" },
+    { url = "/network/", name = "Network" },
+    { url = "/aup/", name = "Acceptable Use" },
+    { url = "/abuse/", name = "Abuse" },
+    { url = "/legal/", name = "Legal" },
+    { url = "/privacy/", name = "Privacy" },
+    { url = "/contact/", name = "Contact" },
+]

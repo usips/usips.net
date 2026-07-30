@@ -1,0 +1,42 @@
+{% extends "base.html" %}
+
+{% block title %}{{ page.title }} | {{ config.title }}{% endblock %}
+{% block description %}{% if page.description %}{{ page.description }}{% else %}{{ config.description }}{% endif %}{% endblock %}
+{% block canonical %}<link rel="canonical" href="{{ page.permalink | safe }}">{% endblock %}
+
+{% block content %}
+<div class="page-header">
+  <div class="container">
+    <h1>{{ page.title }}</h1>
+    {% if page.extra.doc_id %}
+    <dl class="doc-register">
+      <div>
+        <dt>Document</dt>
+        <dd>{{ page.extra.doc_id }}</dd>
+      </div>
+      <div>
+        <dt>Effective</dt>
+        <dd>{{ page.extra.effective }}</dd>
+      </div>
+      <div>
+        <dt>Revised</dt>
+        <dd>{{ page.extra.revised }}</dd>
+      </div>
+      <div>
+        <dt>Owner</dt>
+        <dd>{{ page.extra.owner }}</dd>
+      </div>
+      <div>
+        <dt>Review</dt>
+        <dd>{{ page.extra.review }}</dd>
+      </div>
+    </dl>
+    {% endif %}
+  </div>
+</div>
+<article class="page-content">
+  <div class="container">
+    {{ page.content | safe }}
+  </div>
+</article>
+{% endblock content %}

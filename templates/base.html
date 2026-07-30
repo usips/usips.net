@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>{% block title %}{{ config.title }}{% endblock %}</title>
+  <meta name="description" content="{% block description %}{{ config.description }}{% endblock %}">
+  {% block canonical %}{% endblock %}
+  <link rel="preload" href="{{ get_url(path='fonts/PublicSans-Regular.woff2') }}" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="{{ get_url(path='fonts/PublicSans-Bold.woff2') }}" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="{{ get_url(path='fonts/RobotoMono-Regular.woff2') }}" as="font" type="font/woff2" crossorigin>
+  <link rel="stylesheet" href="{{ get_url(path='main.css') | safe }}?v={{ config.extra.build_timestamp }}">
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+</head>
+
+<body>
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+
+  <header class="site-header">
+    <div class="container">
+      <a class="site-id" href="/">
+        <span class="site-id-text">
+          <span class="site-id-name">USIPS Network Operations</span>
+          <span class="site-id-org">United States Internet Preservation Society</span>
+        </span>
+      </a>
+      <div class="site-record" aria-label="Registry identifiers">
+        ARIN Org: USIPS<br>
+        ASN: pending
+      </div>
+    </div>
+  </header>
+
+  <nav class="site-nav" aria-label="Primary">
+    <div class="container">
+      <ul>
+        {% for item in config.extra.menu %}
+        <li>
+          <a href="{{ item.url | safe }}"{% if current_path and current_path == item.url %} aria-current="page"{% endif %}>{{ item.name }}</a>
+        </li>
+        {% endfor %}
+      </ul>
+    </div>
+  </nav>
+
+  <main id="main-content">
+    {% block content %}{% endblock %}
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <ul class="footer-links">
+        <li><a href="/aup/">Acceptable Use</a></li>
+        <li><a href="/abuse/">Abuse</a></li>
+        <li><a href="/privacy/">Privacy</a></li>
+        <li><a href="/contact/">Contact</a></li>
+        <li><a href="/.well-known/security.txt">security.txt</a></li>
+        <li><a href="{{ config.extra.org_site }}">usips.org</a></li>
+      </ul>
+      <div class="footer-legal">
+        <p>United States Internet Preservation Society, a 501(c)(4) nonprofit corporation. EIN 33-2907939.</p>
+        <p>usips.net is the network operations site of USIPS. Advocacy and membership: <a href="{{ config.extra.org_site }}">usips.org</a>.</p>
+        <p class="build-info">Build: {{ config.extra.build_timestamp }}</p>
+      </div>
+    </div>
+  </footer>
+</body>
+
+</html>
