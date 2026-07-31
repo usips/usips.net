@@ -14,6 +14,8 @@ review = "Annual"
 Role addresses, not personal mailboxes. Every address below is delivered to the responsible officers; none terminates in a single unmonitored inbox. Use the subject-line tags to speed routing.
 
 ## Role addresses
+Acknowledgment target for abuse reports: a human within 24 hours, barring exceptional circumstances. Other addresses are answered in the order received.
+
 
 | Address | Handles | Subject tag |
 |---|---|---|
@@ -26,7 +28,7 @@ Role addresses, not personal mailboxes. Every address below is delivered to the 
 | <peering@usips.net> | Peering requests ([policy](/network/)) | `[PEERING]` |
 | <privacy@usips.net> | Data subject requests ([policy](/privacy/)) | `[PRIVACY]` |
 
-Acknowledgment target for abuse reports: a human within 24 hours, barring exceptional circumstances. Other addresses are answered in the order received.
+Subject lines **must** include the subject tag or they may be rejected by the mail server.
 
 ## Escalation
 
