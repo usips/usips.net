@@ -9,8 +9,8 @@ generate_feeds = false
 build_search_index = false
 
 [link_checker]
-# IRS blocks automated clients; the TEOS link works in real browsers.
-skip_prefixes = ["https://apps.irs.gov"]
+# These hosts block automated clients; the links work in real browsers.
+skip_prefixes = ["https://apps.irs.gov", "https://www.nycourts.gov", "https://www.nysenate.gov"]
 
 [extra]
 # Build timestamp for cache busting (updated by the deploy workflow)

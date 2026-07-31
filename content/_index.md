@@ -45,14 +45,14 @@ Abuse reports sent to <abuse@usips.net> are read and answered by a human within 
 
 ## Document register
 
-| ID | Document | Effective | Owner |
-|---|---|---|---|
-| USIPS-NET-001 | [Organization](/organization/) | 2026-07-30 | M. Hardin, Secretary |
-| USIPS-NET-002 | [Network](/network/) | 2026-07-30 | J. Moon, President |
-| USIPS-NET-003 | [Acceptable Use Policy](/aup/) | 2026-07-30 | J. Moon, President |
-| USIPS-NET-004 | [Abuse Policy](/abuse/) | 2026-07-30 | J. Moon, President |
-| USIPS-NET-005 | [Legal FAQ](/legal/) | 2026-07-30 | M. Hardin, Secretary |
-| USIPS-NET-006 | [Privacy & Retention](/privacy/) | 2026-07-30 | J. Moon, President |
-| USIPS-NET-007 | [Contact](/contact/) | 2026-07-30 | J. Moon, President |
+| ID | Document | Effective | Revised | Owner |
+|---|---|---|---|---|
+| USIPS-NET-001 | [Organization](/organization/) | 2026-07-30 | n/a | M. Hardin, Secretary |
+| USIPS-NET-002 | [Network](/network/) | 2026-07-30 | n/a | J. Moon, President |
+| USIPS-NET-003 | [Acceptable Use Policy](/aup/) | 2026-07-30 | 2026-07-31 | J. Moon, President |
+| USIPS-NET-004 | [Abuse Policy](/abuse/) | 2026-07-30 | 2026-07-31 | J. Moon, President |
+| USIPS-NET-005 | [Legal FAQ](/legal/) | 2026-07-30 | 2026-07-31 | M. Hardin, Secretary |
+| USIPS-NET-006 | [Privacy & Retention](/privacy/) | 2026-07-30 | 2026-07-31 | J. Moon, President |
+| USIPS-NET-007 | [Contact](/contact/) | 2026-07-30 | 2026-07-31 | J. Moon, President |
 
 Security researchers: see [security.txt](/.well-known/security.txt) (RFC 9116).

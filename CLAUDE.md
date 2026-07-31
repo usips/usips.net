@@ -45,6 +45,7 @@ For a local visual check, build with an explicit base URL first; the config base
 - `23.164.216.0/24` is currently announced by AS397702 (the current registrant, 1776 Solutions, LLC). `2607:46C0::/32` is not announced. Verified 2026-07-30 via RIPEstat.
 - Values Josh has not yet supplied: registered agent name and address (row intentionally absent from `/organization`), role-address PGP keys, NCMEC ESP registration completion date, ASN.
 - Whether every role address is actually delivered to multiple officers is unverified; `/contact` currently claims it. Confirm with Josh before launch.
+- Two more published claims to verify against the real mail setup before launch: `/contact` says untagged subject lines "may be rejected by the mail server" (Josh's addition; contradicts `/abuse` and RFC 2142 expectations for automated reports if enforced on abuse@), and `/legal` says the FAQ "serves as the first-tier response sent from our intake addresses" (no autoresponder exists yet).
 
 ## Current state (2026-07-30)
 

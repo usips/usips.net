@@ -6,7 +6,7 @@ template = "page.html"
 [extra]
 doc_id = "USIPS-NET-004"
 effective = "2026-07-30"
-revised = "None"
+revised = "2026-07-31"
 owner = "J. Moon, President"
 review = "Annual"
 +++
@@ -41,8 +41,9 @@ Every report resolves into one of the following categories. The right-hand colum
 
 | Category | Our action | What the reporter receives |
 |---|---|---|
-| CSAM | Immediate removal or null route. NCMEC CyberTipline report. Evidence preservation. | Confirmation that action was taken. No further detail. |
-| NCII (valid removal request) | Removal within 48 hours; reasonable efforts against identical copies. Intake: <ncii@usips.net>. | Confirmation and case reference. |
+| CSAM / CSEM | Immediate removal or null route. NCMEC CyberTipline report. Evidence preservation. | Confirmation that action was taken. No further detail. |
+| NCII (valid removal request) | Intake: <ncii@usips.net>. Forwarded to the responsible covered platform, which is contractually bound to remove within 48 hours with reasonable efforts against identical copies. Direct removal where on USIPS infrastructure. | Confirmation and case reference. |
+| Animal crush and animal abuse content | Forwarded to the responsible downstream with a remediation deadline; [AUP](/aup/) enforcement ladder on non-compliance. Direct remediation where on USIPS infrastructure. | Case reference, the deadline set, and a closure notice with the outcome. |
 | Network abuse from a downstream (spam, scanning, DDoS, malware, C2) | Forwarded to the downstream with a remediation deadline; [AUP](/aup/) enforcement ladder on non-compliance. | Case reference, the deadline set, and a closure notice with the outcome. |
 | Network abuse from USIPS infrastructure | Direct remediation. | Confirmation and a remediation summary. |
 | DMCA notice against transit traffic | § 512(a) conduit; no takedown obligation exists. Forwarded to the downstream where identifiable; counted toward repeat-infringer assessment. | Written statement of our conduit posture and confirmation of forwarding. |

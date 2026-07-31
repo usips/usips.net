@@ -20,7 +20,7 @@ USIPS publishes its full legal identity so that an upstream provider, a peering 
 | Legal name | United States Internet Preservation Society |
 | Entity type | 501(c)(4) nonprofit corporation |
 | EIN | 33-2907939 |
-| Address of record | 25 1st Ave SW, Ste A, Watertown, SD 57201, US |
+| Address of record | 25 1st Ave SW, Ste A, Watertown, SD 57201, United States |
 | President, Treasurer | Joshua Moon |
 | Vice President | Kevin Crawley |
 | Secretary | Matthew Hardin |

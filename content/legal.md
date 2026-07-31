@@ -6,7 +6,7 @@ template = "page.html"
 [extra]
 doc_id = "USIPS-NET-005"
 effective = "2026-07-30"
-revised = "None"
+revised = "2026-07-31"
 owner = "M. Hardin, Secretary"
 review = "Annual"
 +++
@@ -62,7 +62,7 @@ Notices may additionally be copied to <dmca@usips.net>.
 | Preservation | § 2703(f) request; 90 days, one 90-day extension |
 | Emergency disclosure | § 2702(b)(8); reviewed by Joshua Moon and Matthew Hardin |
 
-Serve process at <legal@usips.net>, or by mail to United States Internet Preservation Society, 25 1st Ave SW, Ste A, Watertown, SD 57201. Note that most data categories above concern records USIPS largely does not hold; see the retention schedule before drafting process.
+Serve process in the manner provided by applicable law and, to enable an efficient response, send a courtesy copy to <legal@usips.net>. Courtesy copies of legal correspondence can also be sent via U.S. Mail to United States Internet Preservation Society, 25 1st Ave SW, Ste A, Watertown, SD 57201. Note that most data categories above concern records USIPS largely does not hold; see the retention schedule before drafting process.
 
 ## How are requesters authenticated?
 
@@ -78,11 +78,15 @@ Foreign government requests are routed through the MLAT process or a CLOUD Act e
 
 ## What happens to demands without legal force?
 
-They are declined in writing. Informal requests, letters from private parties, pressure campaigns, and foreign orders without US recognition all receive the same response: a written statement that USIPS acts on valid legal process and on its published policies, and on nothing else. We do not volunteer data, and we do not obstruct valid orders. This applies with equal force to demands that we terminate a customer: our termination triggers are published in the [AUP](/aup/), and no demand outside them is actioned.
+They are declined in writing. Informal requests, letters from private parties, pressure campaigns, and foreign orders without United States recognition all receive the same response: a written statement that USIPS acts on valid legal process and on its published policies, and on nothing else. We do not volunteer data, and we do not obstruct valid orders. This applies with equal force to demands that we terminate a customer: our termination triggers are published in the [AUP](/aup/), and no demand outside them is actioned.
 
 ## What about CSAM?
 
 Apparent CSAM is reported to the NCMEC CyberTipline as required by 18 U.S.C. § 2258A, with preservation as required by § 2258A(h). USIPS conducts no affirmative monitoring of traffic content, consistent with § 2258A(f), and nothing in this document should be read to assume otherwise.
+
+## What about NCII and the TAKE IT DOWN Act?
+
+USIPS is not a covered platform under the TAKE IT DOWN Act: it hosts no forum for user-generated content, and the statutory definition also excludes internet access services. Reports of nonconsensual intimate imagery are accepted at <ncii@usips.net> regardless and resolve per the [disposition matrix](/abuse/). Every downstream that does operate a covered platform is contractually required to maintain a notice-and-removal process, publish a conspicuous notice of it, and remove reported imagery within 48 hours of a valid request ([AUP § 8](/aup/)).
 
 ## Commitments
 

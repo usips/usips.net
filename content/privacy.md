@@ -6,7 +6,7 @@ template = "page.html"
 [extra]
 doc_id = "USIPS-NET-006"
 effective = "2026-07-30"
-revised = "None"
+revised = "2026-07-31"
 owner = "J. Moon, President"
 review = "Annual"
 +++
@@ -20,7 +20,7 @@ This policy covers the USIPS network and this website. The retention schedule be
 | Flow-level telemetry | Source and destination addresses, ports, protocol, byte and packet counts, timestamps, interface; no payloads | Up to 30 days | Automatic, rolling |
 | Aggregate rollups | Per-prefix and per-interface traffic totals derived from flow data; no complete flow tuples | Up to 1 year | Automatic, rolling |
 | Anonymous counters | Interface and service totals containing no addresses | Indefinite | n/a |
-| Abuse and legal correspondence | Reports received, dispositions issued, enforcement records | Retained as organizational records | Per record schedule |
+| Abuse and legal correspondence | Reports received, dispositions issued, enforcement records | Retained as organizational records | Specific to each record |
 
 > USIPS cannot identify an individual end user of a downstream network from an IP address and a timestamp. Flow records, while they exist, attribute traffic to an interconnection or a downstream network, not to a person. After 30 days, that attribution is gone too.
 

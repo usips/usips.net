@@ -6,7 +6,7 @@ template = "page.html"
 [extra]
 doc_id = "USIPS-NET-007"
 effective = "2026-07-30"
-revised = "None"
+revised = "2026-07-31"
 owner = "J. Moon, President"
 review = "Annual"
 +++
@@ -28,7 +28,7 @@ Acknowledgment target for abuse reports: a human within 24 hours, barring except
 | <peering@usips.net> | Peering requests ([policy](/network/)) | `[PEERING]` |
 | <privacy@usips.net> | Data subject requests ([policy](/privacy/)) | `[PRIVACY]` |
 
-Subject lines **must** include the subject tag or they may be rejected by the mail server.
+Subject lines should include the subject tag or they may be rejected by the mail server.
 
 ## Escalation
 
@@ -51,7 +51,7 @@ Watertown, SD 57201
 United States
 ```
 
-Physical mail is accepted at this address as an alternative to email for legal service; see the [Legal FAQ](/legal/) for process requirements.
+Physical mail, including courtesy copies of legal correspondence, is accepted at this address. For service of process, see the [Legal FAQ](/legal/).
 
 <!-- Restore when the role keys are generated and published under /pgp/:
 ## PGP
